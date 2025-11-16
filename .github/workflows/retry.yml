@@ -8,6 +8,16 @@ on:
       - CI
 
 jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Conclusion: ${{ github.event.workflow_run.conclusion }}"
+          echo "Attempt: ${{ github.event.workflow_run.run_attempt }}"
+          echo "Run ID: ${{ github.event.workflow_run.id }}"
+          echo "--- Full Event ---"
+          echo '${{ toJson(github.event.workflow_run) }}'
+  
   retry:
     runs-on: ubuntu-latest
     permissions:
